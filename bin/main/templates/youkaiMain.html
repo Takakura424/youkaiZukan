@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ようかいずかん</title>
+	<link th:href="@{/style.css}" rel="stylesheet">
+</head>
+
+<body>
+	<div class="topTitle">
+		ようかいずかん
+	</div>
+		<div class="panelTable">
+			<div th:each="youkai:${youkaiInfo}" class="panel">
+				<a href="#" class="youkaiCard" th:id="'youkaiNo' + ${youkai.get('no')}">
+					<img th:src="${youkai.get('img')}">
+					<div th:text="${youkai.get('name')}"></div>
+				</a>
+			</div>
+		</div>
+
+		<div class="modal">
+			<div class="modal__bg" data-modal="bg"></div>
+			<div class="modal__inner" data-modal="inner">
+
+				<!-- modal001 start -->
+				<div  th:each="youkai:${youkaiInfo}">
+				<div th:id="'youkaiNo' + ${youkai.get('no')} + 'modal' " class="modal-card">
+					<div class="modal-card__close" data-modal="close">
+						<div class="modal-card__closeBtn"></div>
+					</div>
+	
+					<p class="modal-card__heading">
+						<img th:src="${youkai.get('img')}">
+					</p>
+	
+					<p class="modal-card__text">
+					<div th:text="${youkai.get('name')}"></div>
+					<div th:text="${youkai.get('character')}"></div>
+					</p>
+				</div>
+				</div>
+				<!-- modal001 end -->
+	
+			</div>
+		</div>
+	<!-- modal end -->
+	<script th:src="@{/script.js}"></script>
+</body>
+
+</html>
